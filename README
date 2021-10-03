@@ -1,0 +1,13 @@
+# Machine Learning in Action
+
+Repo for learning Machine Learning in Action.
+
+```
+mechine-learning-in-action/
+|-- data/               # source code provied by this book
+|   |-- README.rst      # more information about copyright
+|-- src/
+|-- requirements.txt
+|-- LICENSE             # MIT License, but does not contain /data folder
+|-- README
+```
