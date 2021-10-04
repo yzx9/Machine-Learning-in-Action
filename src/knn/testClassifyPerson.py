@@ -19,20 +19,23 @@ def plot():
     plt.show()
 
 
-def classifyPerson():
+def classifyPerson(percentTats: float, ffMiles: float, icecream: float):
+    dataRaw, labels = fileToMatrix("./data/Ch02/datingTestSet2.txt")
+    data, norm = kNN.autoNorm(dataRaw)
+    inArray = norm(np.array([percentTats, ffMiles, icecream]))
+    return kNN.classify0(inArray, data, labels, 3)
+
+
+def main():
     resultList = ['not at all', 'in small doses', 'in large doses']
 
     percentTats = float(input("percentage of time spent playing video games?"))
     ffMiles = float(input("frequent filier miles earned per year?"))
     icecream = float(input("liters of ice cream consumed per year?"))
 
-    dataRaw, labels = fileToMatrix("./data/Ch02/datingTestSet2.txt")
-    data, norm = kNN.autoNorm(dataRaw)
-    inArray = norm(np.array([percentTats, ffMiles, icecream]))
-    result = kNN.classify0(inArray, data, labels, 3)
-
+    result = classifyPerson(percentTats, ffMiles, icecream)
     print("You will probably like this person: ", resultList[result - 1])
 
 
 if (__name__ == '__main__'):
-    classifyPerson()
+    main()
